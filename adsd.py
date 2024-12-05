@@ -29,7 +29,7 @@
     
 
 def main():
-    return get_user_item()
+    return get_quantity()
 
 def get_user_item():
     # print list of menu.
@@ -56,6 +56,23 @@ def get_user_item():
                 return 9
             elif user == 'H':
                 return 10
+        except ValueError:
+            continue
+        except KeyboardInterrupt:
+            break
+
+
+def get_quantity():
+    # prompt user for quantity
+    # reprompt if quantity is not an integer
+    while True:
+        try:
+            quantity = int(input('Quantity? ').strip())
+            
+            if quantity < 1:
+                continue
+            else:
+                return quantity
         except ValueError:
             continue
         except KeyboardInterrupt:
