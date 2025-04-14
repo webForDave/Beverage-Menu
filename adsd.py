@@ -12,7 +12,7 @@ def main():
         try:
             user_item = get_user_item()
 
-            if type(user_item) == str:
+            if type(user_item) != int:
                 return user_item
             else:
                 quantity = get_quantity()
@@ -21,7 +21,7 @@ def main():
             question = input('Anything else? Y/N ').strip().title()
 
             if question == 'N':
-                return f"Total price: {sum}"
+                return f"Total price: ${sum}"
             elif question == 'Y' or question != 'Y':
                 continue
         except ValueError:
@@ -35,6 +35,7 @@ def get_user_item():
     while True:
         try:
             # .
+            print("X- Cancel Order")
             for index, value in menu.items(): # menu items is defined above 
                 print(f"{index} - {value[0]} = ${value[1]}")
 
