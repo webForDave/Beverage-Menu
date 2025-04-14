@@ -28,19 +28,18 @@ def main():
 
             if type(user_item) != int: # checks if user item is not of type integer 
                 return user_item # returns the string, in this case, "order cancelled"
-            else: # some fun stuff to be done if user_input is an integer
-                quantity = get_quantity() # invokes and stores the get_quantity function in a variable
-                if type(quantity == None): # if user breaks with the keyboard or nothing is returned from get_quantity
-                    return "No quantity was specified"
-                else:
-                    sum += user_item * quantity # assigns the sum variable a new value - user item multiplied by the quantity 
+            else:
+                quantity = get_quantity()
+                sum += user_item * quantity # assigns the sum variable a new value - user item multiplied by the quantity 
             
-            question = input('Anything else? Y/N ').strip().title() # prompts the user for something else
+                question = input('Anything else? Y/N ').strip().title() # prompts the user for something else
 
-            if question == 'N': # returns the sum value if user is satisfied with order
-                return f"Total price: ${sum}"
-            elif question == 'Y' or question != 'Y': # reprompts the user for an additional oders if not satisfied
-                continue
+                if question == 'N': # returns the sum value if user is satisfied with order
+                    return f"Total price: ${sum}"
+                elif question == 'Y': # reprompts the user for an additional oders if not satisfied
+                    continue
+                elif question not in ["Y", "N"]: # if user enters something else than a yes or no
+                    return f"\nInvalid Input\nTotal price: ${sum}"
         except ValueError:
             continue
 
